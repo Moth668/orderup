@@ -28,7 +28,9 @@ def place_order(menu):
     print("Welcome to the Generic Take Out Restaurant.")
 
     # TODO: Create a continuous while loop so customers can order multiple items
-    while True:
+    place_order = True
+
+    while place_order:
 
         # TODO: Ask the customer what they want to order
         print("What would you like to order?")
@@ -67,31 +69,26 @@ def place_order(menu):
 
         # TODO: Ask the customer if they would like to order anything else
         # TODO: Let the customer know if they should type 'n' or 'N' to quit   
-        print("Would you like to order anything else? (y/n)")
+        keep_ordering = input("Would you like to order anything else? (y/n)")
 
         # TODO: Write a conditional statement that checks the user's input
         # TODO: The conditional statement should check for 'n' or 'N'
-        if menu_selection.lower() == "n":
-
+        if keep_ordering == "n":
+        
             # TODO: Write a print statement that thanks the customer for their order
             print("Thank you for your order!")
-
-
+            
             # TODO: Use list comprehension to create a list called prices_list,
             # TODO: which contains the total prices for each item in the order list:
             # TODO: The total price for each item should multiply the price by quantity
             prices_list = [item["Price"] * item["Quantity"] for item in order]
-
-            # TODO: Create an order_total from the prices list using sum()
-            # TODO: Round the prices to 2 decimal places.
-            order_total = round(sum(prices_list), 2)
-
-
-            # TODO: Exit the ordering loop
-            # TODO: Either use a break statement or set the condition to False
-            break
-
-
+            # Create an order_total from the prices list using sum()
+            # and round the prices to 2 decimal places.
+            order_total = round(sum(prices_list),2)
+            # Write a break statement or set the condition to False to exit
+            # the ordering loop
+            place_order = False
+           
     # TODO: Return the order list and the order total
     return order, order_total
 
